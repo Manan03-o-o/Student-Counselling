@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #007bff; 
+    --secondary-color: #6c757d; 
+    --card-bg: #ffffff;
+    --body-bg: #f8f9fa; 
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--body-bg);
+    
+    background: linear-gradient(135deg, #e0f7fa 0%, #c8e6c9 100%);
+}
+
+.login-card {
+    max-width: 450px; 
+    width: 90%; 
+    background-color: var(--card-bg);
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    transition: transform 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-2px); 
+}
+
+.app-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 20px !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+.divider-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--secondary-color);
+    margin: 1rem 0;
+}
+
+.divider-text hr {
+    flex-grow: 1;
+    margin: 0 10px;
+    border-top: 1px solid #dee2e6;
+}
+
+.social-login .btn {
+    font-weight: 500;
+}
+
+.admin-link {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.admin-link:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 576px) {
+    .login-card {
+        padding: 30px 20px !important;
+    }
+}
