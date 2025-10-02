@@ -1,28 +1,22 @@
+# Application/Student/urls.py
+
 from django.urls import path
 from . import views 
-# Import the views module from the current directory (Student app)
+# This imports the functions (like student_login) from Application/Student/views.py
 
 urlpatterns = [
-    # path('', views.home, name='home'),  # Example: landing page
+    # 1. Authentication Paths
+    # We keep these for consistency, but allauth handles the real logic
     path('login/', views.student_login, name='student_login'), 
     path('signup/', views.student_signup, name='student_signup'),
     
-    # Placeholder for the data submission form (Phase 3)
+    # 2. Post-Login Core Paths
+    path('dashboard/', views.student_dashboard, name='student_dashboard'), 
+    
+    # 3. Data Submission Forms (Req. 4)
     path('data-submission/', views.data_submission, name='data_submission'), 
     
-    # Placeholder for the dashboard (Phase 3)
-    path('dashboard/', views.student_dashboard, name='student_dashboard'), 
+    # Note: You can also use the commented-out path for a root/home page if needed later
+    # path('', views.home, name='home'), 
 ]
-# Application/Student/urls.py
-from django.urls import path
-from . import views 
-
-urlpatterns = [
-    # Existing Login Path
-    path('login/', views.student_login, name='student_login'), 
-
-    # New Sign Up Path
-    path('signup/', views.student_signup, name='student_signup'),
-
-    # ... other paths ...
-]
+path('admin-login/', views.admin_login, name='admin_login'),
