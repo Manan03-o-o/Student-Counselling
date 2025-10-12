@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Allocate Branch for {{ student.user.username }}</h3>
+<form method="post">{% csrf_token %}
+  <select name="branch" class="form-select">
+  {% for code, name in branch_choices %}
+    <option value="{{ code }}" {% if student.allocated_branch == code %}selected{% endif %}>
+      {{ name }}
+    </option>
+  {% endfor %}
+</select>
+
+  <button class="btn btn-primary mt-2">Save</button>
+</form>
+{% endblock %}

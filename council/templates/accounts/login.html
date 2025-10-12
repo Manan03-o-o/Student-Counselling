@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh; background: linear-gradient(135deg, #74ebd5, #ACB6E5);">
+    <div class="card shadow-lg p-4" style="width: 350px; border-radius: 15px; background-color: rgba(255, 255, 255, 0.95);">
+        <h3 class="text-center mb-4" style="color: #4a148c;">Welcome Back!</h3>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="mb-3">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger small mt-1">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn w-100" style="background: linear-gradient(90deg, #6a11cb, #2575fc); color: white; font-weight: bold;">Login</button>
+        </form>
+        <p class="text-center mt-3" style="color: #555;">No account? <a href="{% url 'signup' %}" style="color: #6a11cb; font-weight: 500;">Sign up</a></p>
+    </div>
+</div>
+
+<style>
+/* Smooth input focus and border */
+input {
+    border: 2px solid #6a11cb;
+    border-radius: 6px;
+    padding: 8px;
+    width: 100%;
+}
+input:focus {
+    outline: none;
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+/* Button hover */
+.btn:hover {
+    background: linear-gradient(90deg, #2575fc, #6a11cb);
+    color: white;
+    transition: 0.3s;
+}
+</style>
+{% endblock %}

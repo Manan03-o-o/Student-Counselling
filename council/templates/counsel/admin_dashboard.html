@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Math HS</th>
+      <th>Science HS</th>
+      <th>English HS</th>
+      <th>Hindi HS</th>
+      <th>Physics</th>
+      <th>Chemistry</th>
+      <th>Maths</th>
+      <th>Total (10+2)</th>
+      <th>Allocated</th>
+      <th>Payment</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for s in students %}
+<tr>
+  <td>{{ s.user.username }}</td>
+  <td>{{ s.phone }}</td>
+  <td>{{ s.address }}</td>
+  <td>{% if s.marks %}{{ s.marks.math_hs }}{% else %}-{% endif %}</td>
+  <td>{% if s.marks %}{{ s.marks.science_hs }}{% else %}-{% endif %}</td>
+  <td>{% if s.marks %}{{ s.marks.english_hs }}{% else %}-{% endif %}</td>
+  <td>{% if s.marks %}{{ s.marks.hindi_hs }}{% else %}-{% endif %}</td>
+  <td>{% if s.marks %}{{ s.marks.physics }}{% else %}-{% endif %}</td>
+  <td>{% if s.marks %}{{ s.marks.chemistry }}{% else %}-{% endif %}</td>
+  <td>{% if s.marks %}{{ s.marks.maths }}{% else %}-{% endif %}</td>
+  <td>{% if s.marks %}{{ s.marks.total_12 }}{% else %}-{% endif %}</td>
+  <td>{{ s.allocated_branch|default:"-" }}</td>
+  <td>
+    {% if s.paymentreceipt %}
+      <a href="{{ s.paymentreceipt.receipt.url }}" target="_blank" class="btn btn-sm btn-info">View</a>
+      {% if not s.paymentreceipt.verified %}
+        <a href="{% url 'verify_payment' s.id %}" class="btn btn-sm btn-success">Verify</a>
+      {% else %}
+        Verified
+      {% endif %}
+    {% else %}
+      Not uploaded
+    {% endif %}
+  </td>
+  <td>
+  <a href="{% url 'allocate_branch' s.id %}" class="btn btn-sm btn-primary">Allocate</a>
+</td>
+
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+{% endblock %}

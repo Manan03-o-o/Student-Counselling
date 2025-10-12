@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome {{ user.username }}</h2>
+
+<p><a href="{% url 'edit_profile' %}" class="btn btn-sm btn-secondary">Edit Profile</a></p>
+<p><a href="{% url 'submit_marks' %}" class="btn btn-sm btn-secondary">Submit Marks</a></p>
+<p><a href="{% url 'apply_branch' %}" class="btn btn-sm btn-secondary">Apply Branch</a></p>
+<p><a href="{% url 'upload_payment' %}" class="btn btn-sm btn-secondary">Upload Payment</a></p>
+
+<hr>
+<h4>Status</h4>
+<p>Allocated Branch: {{ profile.allocated_branch|default:"Not yet" }}</p>
+<p>Payment Verified: {{ profile.payment_verified }}</p>
+{% endblock %}
